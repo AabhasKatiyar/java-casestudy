@@ -1,41 +1,18 @@
 package lab03_interfaces_abstract;
 
-/**
- * Lab 03 - Concrete Class: TeachingAssistant
- * Demonstrates: Inheriting abstract class and implementing interface methods.
- */
+// Lab 3: Concrete class TeachingAssistant extending Employee
 public class TeachingAssistant extends Employee {
-    private double hourlyRate;
-    private double hoursWorked;
-    private String assignedCourse;
+    int hoursWorked;
+    double hourlyRate;
 
-    public TeachingAssistant(String employeeId, String name, String department,
-                             double hourlyRate, double hoursWorked, String assignedCourse) {
-        super(employeeId, name, department);
-        this.hourlyRate = hourlyRate;
+    public TeachingAssistant(String empId, String name, int hoursWorked, double hourlyRate) {
+        super(empId, name);
         this.hoursWorked = hoursWorked;
-        this.assignedCourse = assignedCourse;
+        this.hourlyRate = hourlyRate;
     }
 
     @Override
-    public String getJobTitle() {
-        return "Graduate Teaching Assistant (TA) for " + assignedCourse;
-    }
-
-    @Override
-    public double calculateMonthlyPayment() {
-        return hourlyRate * hoursWorked;
-    }
-
-    public double getHourlyRate() {
-        return hourlyRate;
-    }
-
-    public double getHoursWorked() {
-        return hoursWorked;
-    }
-
-    public String getAssignedCourse() {
-        return assignedCourse;
+    public double calculateSalary() {
+        return hoursWorked * hourlyRate;
     }
 }

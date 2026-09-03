@@ -2,78 +2,52 @@ package case_studies;
 
 import java.util.Scanner;
 
-/**
- * Case Study 3: Employee Salary Management
- * Problem:
- * An organization maintains employee information.
- * Create an Employee class with:
- * - Employee ID
- * - Name
- * - Basic salary
- * Calculate:
- * - HRA = 20% of basic salary
- * - DA = 10% of basic salary
- * - Gross salary = Basic + HRA + DA
- * Display the complete salary details.
- */
-public class CaseStudy03_EmployeeSalary {
+// Case Study 3: Employee Salary Management
+class Employee {
+    int employeeId;
+    String name;
+    double basicSalary;
 
-    public static class Employee {
-        private final String employeeId;
-        private final String name;
-        private final double basicSalary;
-
-        public Employee(String employeeId, String name, double basicSalary) {
-            this.employeeId = employeeId;
-            this.name = name;
-            this.basicSalary = Math.max(basicSalary, 0.0);
-        }
-
-        public double calculateHRA() {
-            return 0.20 * basicSalary; // 20%
-        }
-
-        public double calculateDA() {
-            return 0.10 * basicSalary; // 10%
-        }
-
-        public double calculateGrossSalary() {
-            return basicSalary + calculateHRA() + calculateDA();
-        }
-
-        public void displaySalarySlip() {
-            System.out.println("==============================================");
-            System.out.println("             EMPLOYEE SALARY SLIP             ");
-            System.out.println("==============================================");
-            System.out.printf("Employee ID:     %s%n", employeeId);
-            System.out.printf("Employee Name:   %s%n", name);
-            System.out.println("----------------------------------------------");
-            System.out.printf("Basic Salary:    ₹%,10.2f%n", basicSalary);
-            System.out.printf("HRA (20%%):       ₹%,10.2f%n", calculateHRA());
-            System.out.printf("DA (10%%):        ₹%,10.2f%n", calculateDA());
-            System.out.println("----------------------------------------------");
-            System.out.printf("GROSS SALARY:    ₹%,10.2f%n", calculateGrossSalary());
-            System.out.println("==============================================");
-        }
+    // Constructor
+    public Employee(int employeeId, String name, double basicSalary) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.basicSalary = basicSalary;
     }
 
+    // Method to calculate and display salary details
+    public void displaySalaryDetails() {
+        double hra = 0.20 * basicSalary; // HRA = 20% of basic salary
+        double da = 0.10 * basicSalary;  // DA = 10% of basic salary
+        double grossSalary = basicSalary + hra + da;
+
+        System.out.println("\n--- Employee Salary Details ---");
+        System.out.println("Employee ID: " + employeeId);
+        System.out.println("Name: " + name);
+        System.out.println("Basic Salary: " + basicSalary);
+        System.out.println("HRA (20%): " + hra);
+        System.out.println("DA (10%): " + da);
+        System.out.println("Gross Salary: " + grossSalary);
+    }
+}
+
+public class CaseStudy03_EmployeeSalary {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("==================================================");
-        System.out.println("   CASE STUDY 3: EMPLOYEE SALARY MANAGEMENT       ");
-        System.out.println("==================================================");
+        Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter Employee ID: ");
-        String id = scanner.nextLine().trim();
+        int id = sc.nextInt();
+        sc.nextLine(); // consume newline
+
         System.out.print("Enter Employee Name: ");
-        String name = scanner.nextLine().trim();
-        System.out.print("Enter Basic Salary (₹): ");
-        double basic = scanner.hasNextDouble() ? scanner.nextDouble() : 50000.0;
+        String name = sc.nextLine();
+
+        System.out.print("Enter Basic Salary: ");
+        double basic = sc.nextDouble();
 
         Employee emp = new Employee(id, name, basic);
-        System.out.println();
-        emp.displaySalarySlip();
+        emp.displaySalaryDetails();
 
-        scanner.close();
+        sc.close();
     }
 }

@@ -1,37 +1,16 @@
 package lab03_interfaces_abstract;
 
-/**
- * Lab 03 - Abstract Class: Employee
- * Demonstrates: Abstract classes, abstract vs concrete methods, and interface implementation.
- */
+// Lab 3: Abstract class Employee
 public abstract class Employee implements Payable {
-    private String employeeId;
-    private String name;
-    private String department;
+    String empId;
+    String name;
 
-    public Employee(String employeeId, String name, String department) {
-        this.employeeId = employeeId;
+    public Employee(String empId, String name) {
+        this.empId = empId;
         this.name = name;
-        this.department = department;
     }
 
-    public String getEmployeeId() {
-        return employeeId;
+    public void showDetails() {
+        System.out.println("Employee ID: " + empId + ", Name: " + name);
     }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDepartment() {
-        return department;
-    }
-
-    // Concrete method common to all employees
-    public void displayBasicInfo() {
-        System.out.printf("[%s] %s - Dept: %s%n", employeeId, name, department);
-    }
-
-    // Abstract method that concrete subclasses MUST implement
-    public abstract String getJobTitle();
 }

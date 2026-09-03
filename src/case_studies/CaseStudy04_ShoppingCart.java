@@ -1,118 +1,72 @@
 package case_studies;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-/**
- * Case Study 4: Online Shopping Cart
- * Problem:
- * An online shopping application stores products in a shopping cart.
- * Create a Product class containing:
- * - Product ID
- * - Product name
- * - Price
- * - Quantity
- * Calculate the total cost of each product and the total bill.
- * If the total bill exceeds ₹5,000, provide a 10% discount.
- */
-public class CaseStudy04_ShoppingCart {
+// Case Study 4: Online Shopping Cart
+class Product {
+    int productId;
+    String productName;
+    double price;
+    int quantity;
 
-    public static class Product {
-        private final String productId;
-        private final String productName;
-        private final double price;
-        private final int quantity;
-
-        public Product(String productId, String productName, double price, int quantity) {
-            this.productId = productId;
-            this.productName = productName;
-            this.price = Math.max(price, 0.0);
-            this.quantity = Math.max(quantity, 0);
-        }
-
-        public double getTotalCost() {
-            return price * quantity;
-        }
-
-        public String getProductId() {
-            return productId;
-        }
-
-        public String getProductName() {
-            return productName;
-        }
-
-        public double getPrice() {
-            return price;
-        }
-
-        public int getQuantity() {
-            return quantity;
-        }
+    // Constructor
+    public Product(int productId, String productName, double price, int quantity) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
     }
 
+    // Calculate total cost of this product
+    public double getTotalCost() {
+        return price * quantity;
+    }
+}
+
+public class CaseStudy04_ShoppingCart {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("==================================================");
-        System.out.println("     CASE STUDY 4: ONLINE SHOPPING CART           ");
-        System.out.println("==================================================");
+        Scanner sc = new Scanner(System.in);
 
-        List<Product> cart = new ArrayList<>();
+        System.out.print("Enter number of products: ");
+        int n = sc.nextInt();
+        Product[] cart = new Product[n];
 
-        System.out.print("Enter number of products to add to cart: ");
-        int numItems = scanner.hasNextInt() ? scanner.nextInt() : 3;
-        scanner.nextLine(); // consume newline
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nEnter details for product " + (i + 1) + ":");
+            System.out.print("Product ID: ");
+            int id = sc.nextInt();
+            sc.nextLine(); // consume newline
+            System.out.print("Product Name: ");
+            String name = sc.nextLine();
+            System.out.print("Price: ");
+            double price = sc.nextDouble();
+            System.out.print("Quantity: ");
+            int qty = sc.nextInt();
 
-        if (numItems <= 0) {
-            // Add default sample items if 0 entered
-            System.out.println("Loading demo shopping cart items...");
-            cart.add(new Product("P101", "Wireless Headphones", 2499.00, 2));
-            cart.add(new Product("P102", "Mechanical Keyboard", 3200.00, 1));
-            cart.add(new Product("P103", "Gaming Mouse", 850.00, 1));
-        } else {
-            for (int i = 0; i < numItems; i++) {
-                System.out.println("\n[Item " + (i + 1) + "]");
-                System.out.print("Product ID: ");
-                String id = scanner.nextLine().trim();
-                System.out.print("Product Name: ");
-                String name = scanner.nextLine().trim();
-                System.out.print("Price (₹): ");
-                double price = scanner.nextDouble();
-                System.out.print("Quantity: ");
-                int qty = scanner.nextInt();
-                scanner.nextLine(); // consume newline
-
-                cart.add(new Product(id, name, price, qty));
-            }
+            cart[i] = new Product(id, name, price, qty);
         }
 
-        double subtotal = 0;
-        System.out.println("\n====================== INVOICE ======================");
-        System.out.printf("%-8s %-22s %-10s %-6s %-12s%n", "ID", "Product Name", "Price(₹)", "Qty", "Total(₹)");
-        System.out.println("-----------------------------------------------------");
-        for (Product item : cart) {
-            double itemTotal = item.getTotalCost();
-            subtotal += itemTotal;
-            System.out.printf("%-8s %-22s %-10.2f %-6d %-12.2f%n",
-                    item.getProductId(), item.getProductName(), item.getPrice(), item.getQuantity(), itemTotal);
+        // Calculate bill
+        double totalBill = 0;
+        System.out.println("\n--- Shopping Bill ---");
+        for (int i = 0; i < n; i++) {
+            double cost = cart[i].getTotalCost();
+            totalBill += cost;
+            System.out.println(cart[i].productName + " (" + cart[i].quantity + " x " + cart[i].price + ") = " + cost);
         }
-        System.out.println("-----------------------------------------------------");
-        System.out.printf("Subtotal:                                  ₹%,10.2f%n", subtotal);
 
+        System.out.println("\nSubtotal: " + totalBill);
+
+        // 10% discount if total exceeds 5000
         double discount = 0;
-        if (subtotal > 5000.0) {
-            discount = 0.10 * subtotal; // 10% discount on orders exceeding ₹5,000
-            System.out.printf("Discount (10%% for orders > ₹5,000):       -₹%,10.2f%n", discount);
-        } else {
-            System.out.println("Discount (Orders <= ₹5,000):                ₹      0.00");
+        if (totalBill > 5000) {
+            discount = totalBill * 0.10;
+            System.out.println("10% Discount applied: -" + discount);
         }
 
-        double finalBill = subtotal - discount;
-        System.out.println("=====================================================");
-        System.out.printf("FINAL BILL AMOUNT:                         ₹%,10.2f%n", finalBill);
-        System.out.println("=====================================================");
+        double finalAmount = totalBill - discount;
+        System.out.println("Final Bill Amount: " + finalAmount);
 
-        scanner.close();
+        sc.close();
     }
 }
