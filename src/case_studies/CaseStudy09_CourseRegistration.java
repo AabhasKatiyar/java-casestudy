@@ -2,22 +2,24 @@ package case_studies;
 
 import java.util.Scanner;
 
-class StudentCourse {
+class StudentRegistration {
     String studentName;
     String[] courses = new String[5];
     int courseCount = 0;
 
-    public StudentCourse(String studentName) {
+    public StudentRegistration(String studentName) {
         this.studentName = studentName;
     }
 
-    public void registerCourse(String courseName) {
+    public boolean registerCourse(String courseName) {
         if (courseCount < 5) {
             courses[courseCount] = courseName;
             courseCount++;
             System.out.println("Course \"" + courseName + "\" registered successfully (" + courseCount + "/5).");
+            return true;
         } else {
             System.out.println("Cannot register for \"" + courseName + "\". Maximum limit of 5 courses reached!");
+            return false;
         }
     }
 
@@ -40,7 +42,7 @@ public class CaseStudy09_CourseRegistration {
         System.out.print("Enter Student Name: ");
         String name = sc.nextLine();
 
-        StudentCourse s = new StudentCourse(name);
+        StudentRegistration s = new StudentRegistration(name);
 
         s.registerCourse("Java Programming");
         s.registerCourse("Data Structures");

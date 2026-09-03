@@ -2,6 +2,58 @@ package case_studies;
 
 import java.util.Scanner;
 
+class StudentResult {
+    String name;
+    int[] marks = new int[5];
+
+    public StudentResult(String name, int[] marks) {
+        this.name = name;
+        this.marks = marks;
+    }
+
+    public int calculateTotal() {
+        int total = 0;
+        for (int mark : marks) {
+            total += mark;
+        }
+        return total;
+    }
+
+    public double calculatePercentage() {
+        return calculateTotal() / 5.0;
+    }
+
+    public String calculateGrade() {
+        double percentage = calculatePercentage();
+        if (percentage >= 90) {
+            return "A+";
+        } else if (percentage >= 80) {
+            return "A";
+        } else if (percentage >= 70) {
+            return "B";
+        } else if (percentage >= 60) {
+            return "C";
+        } else if (percentage >= 50) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+
+    public boolean isPassed() {
+        return calculatePercentage() >= 50;
+    }
+
+    public void displayResult() {
+        System.out.println("\n--- Student Result ---");
+        System.out.println("Name: " + name);
+        System.out.println("Total Marks: " + calculateTotal() + "/500");
+        System.out.printf("Percentage: %.2f%%%n", calculatePercentage());
+        System.out.println("Grade: " + calculateGrade());
+        System.out.println("Result: " + (isPassed() ? "Passed" : "Failed"));
+    }
+}
+
 public class CaseStudy01_StudentResult {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -9,41 +61,15 @@ public class CaseStudy01_StudentResult {
         System.out.print("Enter student name: ");
         String name = sc.nextLine();
 
-        System.out.print("Enter marks in subject 1: ");
-        int mark1 = sc.nextInt();
-        System.out.print("Enter marks in subject 2: ");
-        int mark2 = sc.nextInt();
-        System.out.print("Enter marks in subject 3: ");
-        int mark3 = sc.nextInt();
-        System.out.print("Enter marks in subject 4: ");
-        int mark4 = sc.nextInt();
-        System.out.print("Enter marks in subject 5: ");
-        int mark5 = sc.nextInt();
-
-        int total = mark1 + mark2 + mark3 + mark4 + mark5;
-        double percentage = total / 5.0;
-        String grade;
-
-        if (percentage >= 90) {
-            grade = "A+";
-        } else if (percentage >= 80) {
-            grade = "A";
-        } else if (percentage >= 70) {
-            grade = "B";
-        } else if (percentage >= 60) {
-            grade = "C";
-        } else if (percentage >= 50) {
-            grade = "D";
-        } else {
-            grade = "F";
+        int[] marks = new int[5];
+        System.out.println("Enter marks for 5 subjects:");
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            marks[i] = sc.nextInt();
         }
 
-        System.out.println("\n--- Student Result ---");
-        System.out.println("Name: " + name);
-        System.out.println("Total: " + total + "/500");
-        System.out.printf("Percentage: %.2f%%%n", percentage);
-        System.out.println("Grade: " + grade);
-        System.out.println("Result: " + (percentage >= 50 ? "Passed" : "Failed"));
+        StudentResult student = new StudentResult(name, marks);
+        student.displayResult();
 
         sc.close();
     }

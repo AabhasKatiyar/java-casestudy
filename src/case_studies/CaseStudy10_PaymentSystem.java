@@ -44,6 +44,11 @@ class NetBankingPayment implements Payment {
 }
 
 public class CaseStudy10_PaymentSystem {
+
+    public static void processPayment(Payment paymentMethod, double amount) {
+        paymentMethod.pay(amount);
+    }
+
     public static void main(String[] args) {
         System.out.println("--- Payment Methods Demo ---");
 
@@ -51,8 +56,8 @@ public class CaseStudy10_PaymentSystem {
         Payment p2 = new UPIPayment("user@oksbi");
         Payment p3 = new NetBankingPayment("HDFC Bank");
 
-        p1.pay(2499.00);
-        p2.pay(550.00);
-        p3.pay(12000.00);
+        processPayment(p1, 2499.00);
+        processPayment(p2, 550.00);
+        processPayment(p3, 12000.00);
     }
 }

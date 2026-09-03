@@ -13,18 +13,26 @@ class Employee {
         this.basicSalary = basicSalary;
     }
 
-    public void displaySalaryDetails() {
-        double hra = 0.20 * basicSalary;
-        double da = 0.10 * basicSalary;
-        double grossSalary = basicSalary + hra + da;
+    public double calculateHRA() {
+        return 0.20 * basicSalary;
+    }
 
+    public double calculateDA() {
+        return 0.10 * basicSalary;
+    }
+
+    public double calculateGrossSalary() {
+        return basicSalary + calculateHRA() + calculateDA();
+    }
+
+    public void displaySalaryDetails() {
         System.out.println("\n--- Employee Salary Details ---");
         System.out.println("Employee ID: " + employeeId);
         System.out.println("Name: " + name);
         System.out.println("Basic Salary: " + basicSalary);
-        System.out.println("HRA (20%): " + hra);
-        System.out.println("DA (10%): " + da);
-        System.out.println("Gross Salary: " + grossSalary);
+        System.out.println("HRA (20%): " + calculateHRA());
+        System.out.println("DA (10%): " + calculateDA());
+        System.out.println("Gross Salary: " + calculateGrossSalary());
     }
 }
 

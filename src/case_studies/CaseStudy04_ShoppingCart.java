@@ -20,13 +20,52 @@ class Product {
     }
 }
 
+class ShoppingCart {
+    Product[] products;
+
+    public ShoppingCart(Product[] products) {
+        this.products = products;
+    }
+
+    public double calculateTotalBill() {
+        double total = 0;
+        for (Product p : products) {
+            total += p.getTotalCost();
+        }
+        return total;
+    }
+
+    public double calculateDiscount(double totalBill) {
+        if (totalBill > 5000) {
+            return totalBill * 0.10;
+        }
+        return 0;
+    }
+
+    public void displayBill() {
+        double totalBill = calculateTotalBill();
+        double discount = calculateDiscount(totalBill);
+        double finalAmount = totalBill - discount;
+
+        System.out.println("\n--- Shopping Bill ---");
+        for (Product p : products) {
+            System.out.println(p.productName + " (" + p.quantity + " x " + p.price + ") = " + p.getTotalCost());
+        }
+        System.out.println("\nSubtotal: " + totalBill);
+        if (discount > 0) {
+            System.out.println("10% Discount applied: -" + discount);
+        }
+        System.out.println("Final Bill Amount: " + finalAmount);
+    }
+}
+
 public class CaseStudy04_ShoppingCart {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter number of products: ");
         int n = sc.nextInt();
-        Product[] cart = new Product[n];
+        Product[] products = new Product[n];
 
         for (int i = 0; i < n; i++) {
             System.out.println("\nEnter details for product " + (i + 1) + ":");
@@ -40,27 +79,11 @@ public class CaseStudy04_ShoppingCart {
             System.out.print("Quantity: ");
             int qty = sc.nextInt();
 
-            cart[i] = new Product(id, name, price, qty);
+            products[i] = new Product(id, name, price, qty);
         }
 
-        double totalBill = 0;
-        System.out.println("\n--- Shopping Bill ---");
-        for (int i = 0; i < n; i++) {
-            double cost = cart[i].getTotalCost();
-            totalBill += cost;
-            System.out.println(cart[i].productName + " (" + cart[i].quantity + " x " + cart[i].price + ") = " + cost);
-        }
-
-        System.out.println("\nSubtotal: " + totalBill);
-
-        double discount = 0;
-        if (totalBill > 5000) {
-            discount = totalBill * 0.10;
-            System.out.println("10% Discount applied: -" + discount);
-        }
-
-        double finalAmount = totalBill - discount;
-        System.out.println("Final Bill Amount: " + finalAmount);
+        ShoppingCart cart = new ShoppingCart(products);
+        cart.displayBill();
 
         sc.close();
     }

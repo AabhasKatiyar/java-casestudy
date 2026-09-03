@@ -1,44 +1,55 @@
 package case_studies;
 
-class Staff {
+class EmployeeStaff {
     String name;
     double salary;
 
-    public Staff(String name, double salary) {
+    public EmployeeStaff(String name, double salary) {
         this.name = name;
         this.salary = salary;
     }
 
-    public void display() {
+    public double getTotalSalary() {
+        return salary;
+    }
+
+    public void displayDetails() {
         System.out.println("Name: " + name);
         System.out.println("Salary: " + salary);
+        System.out.println("Total Salary: " + getTotalSalary());
     }
 }
 
-class Manager extends Staff {
+class ManagerStaff extends EmployeeStaff {
     double bonus;
 
-    public Manager(String name, double salary, double bonus) {
+    public ManagerStaff(String name, double salary, double bonus) {
         super(name, salary);
         this.bonus = bonus;
     }
 
     @Override
-    public void display() {
-        super.display();
+    public double getTotalSalary() {
+        return salary + bonus;
+    }
+
+    @Override
+    public void displayDetails() {
+        System.out.println("Name: " + name);
+        System.out.println("Salary: " + salary);
         System.out.println("Bonus: " + bonus);
-        System.out.println("Total Salary (Salary + Bonus): " + (salary + bonus));
+        System.out.println("Total Salary (Salary + Bonus): " + getTotalSalary());
     }
 }
 
 public class CaseStudy08_EmployeeInheritance {
     public static void main(String[] args) {
         System.out.println("--- Employee Details ---");
-        Staff e = new Staff("Rahul Sharma", 40000);
-        e.display();
+        EmployeeStaff e = new EmployeeStaff("Rahul Sharma", 40000);
+        e.displayDetails();
 
         System.out.println("\n--- Manager Details ---");
-        Manager m = new Manager("Priya Singh", 75000, 20000);
-        m.display();
+        ManagerStaff m = new ManagerStaff("Priya Singh", 75000, 20000);
+        m.displayDetails();
     }
 }

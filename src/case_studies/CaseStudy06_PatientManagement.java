@@ -15,18 +15,24 @@ class Patient {
         this.temperature = temperature;
     }
 
-    public void checkFever() {
+    public boolean hasFever() {
+        return temperature > 100.4;
+    }
+
+    public String getStatus() {
+        if (hasFever()) {
+            return "Fever";
+        }
+        return "Normal";
+    }
+
+    public void displayPatientDetails() {
         System.out.println("\n--- Patient Details ---");
         System.out.println("Patient ID: " + patientId);
         System.out.println("Name: " + name);
         System.out.println("Age: " + age);
         System.out.println("Temperature: " + temperature + "°F");
-
-        if (temperature > 100.4) {
-            System.out.println("Condition: Fever");
-        } else {
-            System.out.println("Condition: Normal");
-        }
+        System.out.println("Condition: " + getStatus());
     }
 }
 
@@ -48,7 +54,7 @@ public class CaseStudy06_PatientManagement {
         double temp = sc.nextDouble();
 
         Patient p = new Patient(id, name, age, temp);
-        p.checkFever();
+        p.displayPatientDetails();
 
         sc.close();
     }

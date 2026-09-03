@@ -55,7 +55,6 @@ public class CaseStudy02_BankAccount {
         double bal = sc.nextDouble();
 
         BankAccount acc = new BankAccount(accNum, name, bal);
-
         acc.displayBalance();
 
         System.out.print("\nEnter amount to deposit: ");
