@@ -1,18 +1,35 @@
-# 🎓 College Semester Java Programming Curriculum & Capstone Project
+# 🎓 College Semester Java Programming Curriculum & Case Study Suite
 
-A comprehensive, modular repository containing standard university / college semester Java coursework, lab exercises, Object-Oriented Programming (OOP) demonstrations, and an interactive **Student Management System** capstone project.
+A comprehensive, modular repository containing standard university / college semester Java coursework, lab exercises, Object-Oriented Programming (OOP) demonstrations, and the complete **10 University Case Study Solutions** plus an interactive **Student Management System** capstone project.
 
 ---
 
-## 📚 Curriculum Structure & Lab Breakdown
+## 📑 10 University Case Studies Solutions
+
+| # | Case Study Title | Topics / Concepts | Source File |
+| :---: | :--- | :--- | :--- |
+| **1** | **Student Result Management** | Scanner input, 5 subject marks aggregation, grade bands ($A+$ to $F$), pass/fail verification | [`CaseStudy01_StudentResult.java`](src/case_studies/CaseStudy01_StudentResult.java) |
+| **2** | **Bank Account Management** | Encapsulation, balance inquiry, deposit, withdrawal with insufficient fund guards | [`CaseStudy02_BankAccount.java`](src/case_studies/CaseStudy02_BankAccount.java) |
+| **3** | **Employee Salary Management** | Basic salary, HRA (20%), DA (10%), Gross salary computation, formatted pay slips | [`CaseStudy03_EmployeeSalary.java`](src/case_studies/CaseStudy03_EmployeeSalary.java) |
+| **4** | **Online Shopping Cart** | `Product` class, price $\times$ quantity subtotal, 10% discount on orders exceeding ₹5,000 | [`CaseStudy04_ShoppingCart.java`](src/case_studies/CaseStudy04_ShoppingCart.java) |
+| **5** | **Library Management System** | Book inventory, `issueBook()`, `returnBook()`, duplicate issuance prevention | [`CaseStudy05_LibraryManagement.java`](src/case_studies/CaseStudy05_LibraryManagement.java) |
+| **6** | **Hospital Patient Management** | Patient demographics, body temperature diagnostic ($>100.4^\circ\text{F} \to \text{Fever}$) | [`CaseStudy06_PatientManagement.java`](src/case_studies/CaseStudy06_PatientManagement.java) |
+| **7** | **ATM Simulation** | PIN authentication, maximum 3 failed attempts lockout, balance check, deposit, withdraw | [`CaseStudy07_ATMSimulation.java`](src/case_studies/CaseStudy07_ATMSimulation.java) |
+| **8** | **Employee & Manager Inheritance**| Inheritance (`extends`, `super`), base salary + managerial bonus override | [`CaseStudy08_EmployeeInheritance.java`](src/case_studies/CaseStudy08_EmployeeInheritance.java) |
+| **9** | **University Course Registration**| Course list management, maximum 5 courses registration limit enforcement | [`CaseStudy09_CourseRegistration.java`](src/case_studies/CaseStudy09_CourseRegistration.java) |
+| **10**| **E-Commerce Payment System** | Polymorphic `Payment` interface, `CreditCard`, `UPI`, `NetBanking` implementations | [`CaseStudy10_PaymentSystem.java`](src/case_studies/CaseStudy10_PaymentSystem.java) |
+
+---
+
+## 📚 Curriculum Lab Modules
 
 | Module | Package | Concepts Covered | Key Classes |
 | :--- | :--- | :--- | :--- |
-| **Lab 01: Core Fundamentals** | `lab01_fundamentals` | Standard I/O (`Scanner`), conditionals, switch-case, loops, recursion, 1D arrays, math logic. | [`BasicCalculator.java`](src/lab01_fundamentals/BasicCalculator.java)<br>[`NumberOperations.java`](src/lab01_fundamentals/NumberOperations.java)<br>[`GradeCalculator.java`](src/lab01_fundamentals/GradeCalculator.java) |
-| **Lab 02: 4 Pillars of OOP** | `lab02_oop_core` | Encapsulation, Getters/Setters, Inheritance (`extends`, `super`), Polymorphism, Method Overriding, Constructor Overloading. | [`Person.java`](src/lab02_oop_core/Person.java)<br>[`Student.java`](src/lab02_oop_core/Student.java)<br>[`Professor.java`](src/lab02_oop_core/Professor.java)<br>[`OOPDemo.java`](src/lab02_oop_core/OOPDemo.java) |
-| **Lab 03: Interfaces & Abstraction** | `lab03_interfaces_abstract` | Abstract classes, abstract methods, interface contracts, default methods, dynamic dispatch. | [`Payable.java`](src/lab03_interfaces_abstract/Payable.java)<br>[`Employee.java`](src/lab03_interfaces_abstract/Employee.java)<br>[`TeachingAssistant.java`](src/lab03_interfaces_abstract/TeachingAssistant.java)<br>[`InterfaceDemo.java`](src/lab03_interfaces_abstract/InterfaceDemo.java) |
-| **Lab 04: Exception Handling** | `lab04_exception_handling` | `try-catch-finally`, checked vs unchecked exceptions, `throw`, `throws`, custom domain exceptions. | [`InvalidScoreException.java`](src/lab04_exception_handling/InvalidScoreException.java)<br>[`ExceptionLab.java`](src/lab04_exception_handling/ExceptionLab.java) |
-| **Capstone Project: Student System** | `capstone_student_system` | Full interactive CLI application, Java Collections (`HashMap`, `ArrayList`, `Comparator`), CRUD operations, report formatting. | [`StudentRecord.java`](src/capstone_student_system/StudentRecord.java)<br>[`StudentManager.java`](src/capstone_student_system/StudentManager.java)<br>[`Main.java`](src/capstone_student_system/Main.java) |
+| **Lab 01: Core Fundamentals** | `lab01_fundamentals` | Standard I/O (`Scanner`), conditionals, switch-case, loops, recursion, 1D arrays | [`BasicCalculator.java`](src/lab01_fundamentals/BasicCalculator.java)<br>[`NumberOperations.java`](src/lab01_fundamentals/NumberOperations.java)<br>[`GradeCalculator.java`](src/lab01_fundamentals/GradeCalculator.java) |
+| **Lab 02: 4 Pillars of OOP** | `lab02_oop_core` | Encapsulation, Getters/Setters, Inheritance (`extends`, `super`), Polymorphism, Method Overriding | [`Person.java`](src/lab02_oop_core/Person.java)<br>[`Student.java`](src/lab02_oop_core/Student.java)<br>[`Professor.java`](src/lab02_oop_core/Professor.java)<br>[`OOPDemo.java`](src/lab02_oop_core/OOPDemo.java) |
+| **Lab 03: Interfaces & Abstraction** | `lab03_interfaces_abstract` | Abstract classes, interface contracts, default methods, dynamic dispatch | [`Payable.java`](src/lab03_interfaces_abstract/Payable.java)<br>[`Employee.java`](src/lab03_interfaces_abstract/Employee.java)<br>[`TeachingAssistant.java`](src/lab03_interfaces_abstract/TeachingAssistant.java)<br>[`InterfaceDemo.java`](src/lab03_interfaces_abstract/InterfaceDemo.java) |
+| **Lab 04: Exception Handling** | `lab04_exception_handling` | `try-catch-finally`, checked vs unchecked exceptions, `throw`, `throws`, custom exceptions | [`InvalidScoreException.java`](src/lab04_exception_handling/InvalidScoreException.java)<br>[`ExceptionLab.java`](src/lab04_exception_handling/ExceptionLab.java) |
+| **Capstone: Student System** | `capstone_student_system` | Full interactive CLI application, Java Collections (`HashMap`, `ArrayList`, `Comparator`) | [`StudentRecord.java`](src/capstone_student_system/StudentRecord.java)<br>[`StudentManager.java`](src/capstone_student_system/StudentManager.java)<br>[`Main.java`](src/capstone_student_system/Main.java) |
 
 ---
 
@@ -29,100 +46,82 @@ A comprehensive, modular repository containing standard university / college sem
 
 ## 🚀 How to Compile & Run
 
-### 1. Compile All Modules into `bin/` Directory
-From the root of this project directory:
+### 1. Compile Everything into `bin/`
+From the project root:
 ```bash
-# Windows PowerShell / CMD / Bash
-javac -d bin src/lab01_fundamentals/*.java src/lab02_oop_core/*.java src/lab03_interfaces_abstract/*.java src/lab04_exception_handling/*.java src/capstone_student_system/*.java
+javac -d bin src/case_studies/*.java src/lab01_fundamentals/*.java src/lab02_oop_core/*.java src/lab03_interfaces_abstract/*.java src/lab04_exception_handling/*.java src/capstone_student_system/*.java
 ```
 
-### 2. Run Individual Labs
-
-#### Lab 01 - Core Fundamentals
+### 2. Run the Master Case Studies Menu
 ```bash
-# Basic Calculator
-java -cp bin lab01_fundamentals.BasicCalculator
-
-# Number Operations (Prime, Fibonacci, Factorial)
-java -cp bin lab01_fundamentals.NumberOperations
-
-# Grade Evaluator
-java -cp bin lab01_fundamentals.GradeCalculator
+java -cp bin case_studies.CaseStudiesRunner
 ```
 
-#### Lab 02 - Object Oriented Programming Demo
+### 3. Run Individual Case Studies Directly
 ```bash
-java -cp bin lab02_oop_core.OOPDemo
-```
+# Case Study 1: Student Result System
+java -cp bin case_studies.CaseStudy01_StudentResult
 
-#### Lab 03 - Interfaces & Abstraction
-```bash
-java -cp bin lab03_interfaces_abstract.InterfaceDemo
-```
+# Case Study 2: Bank Account Management
+java -cp bin case_studies.CaseStudy02_BankAccount
 
-#### Lab 04 - Exception Handling
-```bash
-java -cp bin lab04_exception_handling.ExceptionLab
-```
+# Case Study 3: Employee Salary Management
+java -cp bin case_studies.CaseStudy03_EmployeeSalary
 
-#### Capstone Project - Interactive Student Management System
-```bash
-java -cp bin capstone_student_system.Main
+# Case Study 4: Online Shopping Cart
+java -cp bin case_studies.CaseStudy04_ShoppingCart
+
+# Case Study 5: Library Management System
+java -cp bin case_studies.CaseStudy05_LibraryManagement
+
+# Case Study 6: Hospital Patient Management
+java -cp bin case_studies.CaseStudy06_PatientManagement
+
+# Case Study 7: ATM Simulator
+java -cp bin case_studies.CaseStudy07_ATMSimulation
+
+# Case Study 8: Employee & Manager Inheritance
+java -cp bin case_studies.CaseStudy08_EmployeeInheritance
+
+# Case Study 9: University Course Registration
+java -cp bin case_studies.CaseStudy09_CourseRegistration
+
+# Case Study 10: E-Commerce Payment (Polymorphism)
+java -cp bin case_studies.CaseStudy10_PaymentSystem
 ```
 
 ---
 
-## 🖥️ Capstone Project Features
-
-The console application provides a full menu-driven interface:
-```text
-==========================================================
-   UNIVERSITY SEMESTER PROJECT: STUDENT MANAGEMENT SYSTEM 
-==========================================================
-----------------------------------------------------------
- 1. View All Student Records
- 2. Add New Student Record
- 3. Add / Update Course Marks for Student
- 4. Search Student by Name or Roll Number
- 5. Remove Student Record
- 6. View Department Class Summary & Average GPA
- 7. Exit Application
-----------------------------------------------------------
-```
-
----
-
-## 📂 Repository Tree
+## 📂 Repository Directory Tree
 
 ```
 college-java-semester/
 ├── .gitignore
 ├── README.md
 └── src/
+    ├── case_studies/
+    │   ├── CaseStudiesRunner.java
+    │   ├── CaseStudy01_StudentResult.java
+    │   ├── CaseStudy02_BankAccount.java
+    │   ├── CaseStudy03_EmployeeSalary.java
+    │   ├── CaseStudy04_ShoppingCart.java
+    │   ├── CaseStudy05_LibraryManagement.java
+    │   ├── CaseStudy06_PatientManagement.java
+    │   ├── CaseStudy07_ATMSimulation.java
+    │   ├── CaseStudy08_EmployeeInheritance.java
+    │   ├── CaseStudy09_CourseRegistration.java
+    │   └── CaseStudy10_PaymentSystem.java
     ├── capstone_student_system/
     │   ├── Main.java
     │   ├── StudentManager.java
     │   └── StudentRecord.java
     ├── lab01_fundamentals/
-    │   ├── BasicCalculator.java
-    │   ├── GradeCalculator.java
-    │   └── NumberOperations.java
     ├── lab02_oop_core/
-    │   ├── OOPDemo.java
-    │   ├── Person.java
-    │   ├── Professor.java
-    │   └── Student.java
     ├── lab03_interfaces_abstract/
-    │   ├── Employee.java
-    │   ├── InterfaceDemo.java
-    │   ├── Payable.java
-    │   └── TeachingAssistant.java
     └── lab04_exception_handling/
-        ├── ExceptionLab.java
-        └── InvalidScoreException.java
 ```
 
 ---
 
 ## 📄 License
-This repository is prepared for academic and learning purposes. Open for study, modification, and semester project submissions.
+Academic and learning repository. Open for study, modification, and semester lab submissions.
