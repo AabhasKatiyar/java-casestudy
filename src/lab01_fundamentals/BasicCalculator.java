@@ -2,7 +2,6 @@ package lab01_fundamentals;
 
 import java.util.Scanner;
 
-// Lab 1: Basic Calculator
 public class BasicCalculator {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

@@ -2,13 +2,11 @@ package capstone_student_system;
 
 import java.util.Scanner;
 
-// Main interactive menu for Student Management System
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManager manager = new StudentManager();
 
-        // Sample initial data
         manager.addStudent(new StudentRecord(101, "Rahul Sharma", "CSE", 85.5));
         manager.addStudent(new StudentRecord(102, "Sneha Patel", "IT", 92.0));
 
@@ -27,7 +25,7 @@ public class Main {
                 case 1:
                     System.out.print("Enter Roll No: ");
                     int roll = sc.nextInt();
-                    sc.nextLine(); // consume newline
+                    sc.nextLine();
                     System.out.print("Enter Name: ");
                     String name = sc.nextLine();
                     System.out.print("Enter Branch: ");

@@ -1,6 +1,5 @@
 package lab02_oop_core;
 
-// Lab 2: OOP Concepts Demo (Inheritance & Polymorphism)
 public class OOPDemo {
     public static void main(String[] args) {
         System.out.println("=== OOP Demonstration ===");
@@ -14,7 +13,6 @@ public class OOPDemo {
         System.out.println("\n--- Professor Details ---");
         p.displayInfo();
 
-        // Polymorphism demonstration using Parent reference
         System.out.println("\n--- Polymorphism Demo ---");
         Person ref;
         ref = s;

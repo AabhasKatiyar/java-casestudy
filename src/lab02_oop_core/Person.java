@@ -1,6 +1,5 @@
 package lab02_oop_core;
 
-// Lab 2: Base class Person
 public class Person {
     private String id;
     private String name;

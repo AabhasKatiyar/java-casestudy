@@ -1,13 +1,9 @@
 package case_studies;
 
-// Case Study 8: Employee Inheritance
-
-// Base class
 class Staff {
     String name;
     double salary;
 
-    // Constructor
     public Staff(String name, double salary) {
         this.name = name;
         this.salary = salary;
@@ -19,17 +15,14 @@ class Staff {
     }
 }
 
-// Derived class using inheritance
 class Manager extends Staff {
     double bonus;
 
-    // Constructor using super
     public Manager(String name, double salary, double bonus) {
         super(name, salary);
         this.bonus = bonus;
     }
 
-    // Overriding display method to include bonus and total salary
     @Override
     public void display() {
         super.display();

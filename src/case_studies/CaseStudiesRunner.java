@@ -2,7 +2,6 @@ package case_studies;
 
 import java.util.Scanner;
 
-// Runner program for all 10 case studies
 public class CaseStudiesRunner {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

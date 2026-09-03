@@ -1,21 +1,18 @@
 package case_studies;
 
-// Case Study 5: Library Management System
 class Book {
     int bookId;
     String bookTitle;
     String author;
     boolean isAvailable;
 
-    // Constructor
     public Book(int bookId, String bookTitle, String author) {
         this.bookId = bookId;
         this.bookTitle = bookTitle;
         this.author = author;
-        this.isAvailable = true; // initially available
+        this.isAvailable = true;
     }
 
-    // Method to issue book
     public void issueBook() {
         if (isAvailable) {
             isAvailable = false;
@@ -25,7 +22,6 @@ class Book {
         }
     }
 
-    // Method to return book
     public void returnBook() {
         if (!isAvailable) {
             isAvailable = true;
@@ -35,7 +31,6 @@ class Book {
         }
     }
 
-    // Method to display book details
     public void displayBook() {
         System.out.println("ID: " + bookId + ", Title: " + bookTitle + ", Author: " + author + ", Available: " + (isAvailable ? "Yes" : "No"));
     }
@@ -51,14 +46,11 @@ public class CaseStudy05_LibraryManagement {
         b2.displayBook();
 
         System.out.println("\n--- Testing Issue and Return ---");
-        // Issue book 1
         b1.issueBook();
         b1.displayBook();
 
-        // Try to issue book 1 again
         b1.issueBook();
 
-        // Return book 1
         b1.returnBook();
         b1.displayBook();
     }

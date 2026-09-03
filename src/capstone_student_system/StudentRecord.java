@@ -1,6 +1,5 @@
 package capstone_student_system;
 
-// Student Record Model
 public class StudentRecord {
     private int rollNo;
     private String name;

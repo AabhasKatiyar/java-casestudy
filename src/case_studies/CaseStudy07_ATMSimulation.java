@@ -2,7 +2,6 @@ package case_studies;
 
 import java.util.Scanner;
 
-// Case Study 7: ATM Simulation
 public class CaseStudy07_ATMSimulation {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -14,7 +13,6 @@ public class CaseStudy07_ATMSimulation {
 
         System.out.println("=== Welcome to ATM ===");
 
-        // Check PIN with max 3 attempts
         while (attempts < 3) {
             System.out.print("Enter your 4-digit PIN: ");
             int pin = sc.nextInt();
@@ -35,7 +33,6 @@ public class CaseStudy07_ATMSimulation {
             return;
         }
 
-        // ATM Menu
         int choice;
         do {
             System.out.println("\n--- ATM Menu ---");

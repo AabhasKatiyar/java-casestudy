@@ -2,14 +2,12 @@ package case_studies;
 
 import java.util.Scanner;
 
-// Case Study 4: Online Shopping Cart
 class Product {
     int productId;
     String productName;
     double price;
     int quantity;
 
-    // Constructor
     public Product(int productId, String productName, double price, int quantity) {
         this.productId = productId;
         this.productName = productName;
@@ -17,7 +15,6 @@ class Product {
         this.quantity = quantity;
     }
 
-    // Calculate total cost of this product
     public double getTotalCost() {
         return price * quantity;
     }
@@ -35,7 +32,7 @@ public class CaseStudy04_ShoppingCart {
             System.out.println("\nEnter details for product " + (i + 1) + ":");
             System.out.print("Product ID: ");
             int id = sc.nextInt();
-            sc.nextLine(); // consume newline
+            sc.nextLine();
             System.out.print("Product Name: ");
             String name = sc.nextLine();
             System.out.print("Price: ");
@@ -46,7 +43,6 @@ public class CaseStudy04_ShoppingCart {
             cart[i] = new Product(id, name, price, qty);
         }
 
-        // Calculate bill
         double totalBill = 0;
         System.out.println("\n--- Shopping Bill ---");
         for (int i = 0; i < n; i++) {
@@ -57,7 +53,6 @@ public class CaseStudy04_ShoppingCart {
 
         System.out.println("\nSubtotal: " + totalBill);
 
-        // 10% discount if total exceeds 5000
         double discount = 0;
         if (totalBill > 5000) {
             discount = totalBill * 0.10;

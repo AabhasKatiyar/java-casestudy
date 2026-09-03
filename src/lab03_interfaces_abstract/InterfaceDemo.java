@@ -1,6 +1,5 @@
 package lab03_interfaces_abstract;
 
-// Lab 3: Interface and Abstract Class Demo
 public class InterfaceDemo {
     public static void main(String[] args) {
         System.out.println("=== Interface & Abstract Class Demo ===");

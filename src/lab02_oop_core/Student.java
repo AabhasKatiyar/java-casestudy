@@ -1,6 +1,5 @@
 package lab02_oop_core;
 
-// Lab 2: Child class Student inheriting from Person
 public class Student extends Person {
     private String branch;
     private double cgpa;

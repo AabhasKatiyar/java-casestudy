@@ -2,10 +2,8 @@ package lab01_fundamentals;
 
 import java.util.Scanner;
 
-// Lab 1: Prime, Factorial and Fibonacci Operations
 public class NumberOperations {
 
-    // Method to check prime
     public static boolean checkPrime(int n) {
         if (n <= 1) return false;
         for (int i = 2; i <= Math.sqrt(n); i++) {
@@ -14,13 +12,11 @@ public class NumberOperations {
         return true;
     }
 
-    // Method for factorial using recursion
     public static long factorial(int n) {
         if (n == 0 || n == 1) return 1;
         return n * factorial(n - 1);
     }
 
-    // Method to print fibonacci series
     public static void printFibonacci(int count) {
         int a = 0, b = 1;
         System.out.print("Fibonacci Series: ");
@@ -39,19 +35,16 @@ public class NumberOperations {
         System.out.print("Enter a number: ");
         int num = sc.nextInt();
 
-        // 1. Prime check
         if (checkPrime(num)) {
             System.out.println(num + " is a Prime number.");
         } else {
             System.out.println(num + " is not a Prime number.");
         }
 
-        // 2. Factorial
         if (num >= 0 && num <= 20) {
             System.out.println("Factorial of " + num + " is: " + factorial(num));
         }
 
-        // 3. Fibonacci
         printFibonacci(8);
 
         sc.close();

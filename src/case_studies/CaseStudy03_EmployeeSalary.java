@@ -2,23 +2,20 @@ package case_studies;
 
 import java.util.Scanner;
 
-// Case Study 3: Employee Salary Management
 class Employee {
     int employeeId;
     String name;
     double basicSalary;
 
-    // Constructor
     public Employee(int employeeId, String name, double basicSalary) {
         this.employeeId = employeeId;
         this.name = name;
         this.basicSalary = basicSalary;
     }
 
-    // Method to calculate and display salary details
     public void displaySalaryDetails() {
-        double hra = 0.20 * basicSalary; // HRA = 20% of basic salary
-        double da = 0.10 * basicSalary;  // DA = 10% of basic salary
+        double hra = 0.20 * basicSalary;
+        double da = 0.10 * basicSalary;
         double grossSalary = basicSalary + hra + da;
 
         System.out.println("\n--- Employee Salary Details ---");
@@ -37,7 +34,7 @@ public class CaseStudy03_EmployeeSalary {
 
         System.out.print("Enter Employee ID: ");
         int id = sc.nextInt();
-        sc.nextLine(); // consume newline
+        sc.nextLine();
 
         System.out.print("Enter Employee Name: ");
         String name = sc.nextLine();

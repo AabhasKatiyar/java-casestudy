@@ -1,6 +1,5 @@
 package lab03_interfaces_abstract;
 
-// Lab 3: Concrete class TeachingAssistant extending Employee
 public class TeachingAssistant extends Employee {
     int hoursWorked;
     double hourlyRate;
