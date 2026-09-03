@@ -2,58 +2,65 @@ package lab01_fundamentals;
 
 import java.util.Scanner;
 
+/**
+ * Lab 01 - Problem 1: Basic Calculator
+ * Demonstrates: Standard I/O (Scanner), variables, data types, arithmetic operators, and switch-case control structures.
+ */
 public class BasicCalculator {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("=== Simple Calculator ===");
-        System.out.print("Enter first number: ");
-        double num1 = sc.nextDouble();
-
-        System.out.print("Enter operator (+, -, *, /, %): ");
-        char op = sc.next().charAt(0);
-
-        System.out.print("Enter second number: ");
-        double num2 = sc.nextDouble();
-
-        double result = 0;
-        boolean valid = true;
-
-        switch (op) {
+    public static double calculate(double num1, double num2, char operator) {
+        switch (operator) {
             case '+':
-                result = num1 + num2;
-                break;
+                return num1 + num2;
             case '-':
-                result = num1 - num2;
-                break;
+                return num1 - num2;
             case '*':
-                result = num1 * num2;
-                break;
+                return num1 * num2;
             case '/':
-                if (num2 != 0) {
-                    result = num1 / num2;
-                } else {
-                    System.out.println("Error: Division by zero is not allowed.");
-                    valid = false;
+                if (num2 == 0) {
+                    throw new ArithmeticException("Division by zero is not allowed.");
                 }
-                break;
+                return num1 / num2;
             case '%':
-                if (num2 != 0) {
-                    result = num1 % num2;
-                } else {
-                    System.out.println("Error: Modulo by zero is not allowed.");
-                    valid = false;
+                if (num2 == 0) {
+                    throw new ArithmeticException("Modulo by zero is not allowed.");
                 }
-                break;
+                return num1 % num2;
             default:
-                System.out.println("Error: Invalid operator!");
-                valid = false;
+                throw new IllegalArgumentException("Invalid operator: " + operator);
         }
+    }
 
-        if (valid) {
-            System.out.println("Result: " + num1 + " " + op + " " + num2 + " = " + result);
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("=========================================");
+        System.out.println("       SEMESTER LAB 01: CALCULATOR       ");
+        System.out.println("=========================================");
+
+        try {
+            System.out.print("Enter first number: ");
+            if (!scanner.hasNextDouble()) {
+                System.out.println("Error: Invalid numeric input.");
+                return;
+            }
+            double num1 = scanner.nextDouble();
+
+            System.out.print("Enter operator (+, -, *, /, %): ");
+            char operator = scanner.next().charAt(0);
+
+            System.out.print("Enter second number: ");
+            if (!scanner.hasNextDouble()) {
+                System.out.println("Error: Invalid numeric input.");
+                return;
+            }
+            double num2 = scanner.nextDouble();
+
+            double result = calculate(num1, num2, operator);
+            System.out.printf("Result: %.2f %c %.2f = %.2f%n", num1, operator, num2, result);
+        } catch (ArithmeticException | IllegalArgumentException e) {
+            System.out.println("Calculation Error: " + e.getMessage());
+        } finally {
+            scanner.close();
         }
-
-        sc.close();
     }
 }

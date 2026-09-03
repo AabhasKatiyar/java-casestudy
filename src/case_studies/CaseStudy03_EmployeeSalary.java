@@ -2,57 +2,78 @@ package case_studies;
 
 import java.util.Scanner;
 
-class Employee {
-    int employeeId;
-    String name;
-    double basicSalary;
-
-    public Employee(int employeeId, String name, double basicSalary) {
-        this.employeeId = employeeId;
-        this.name = name;
-        this.basicSalary = basicSalary;
-    }
-
-    public double calculateHRA() {
-        return 0.20 * basicSalary;
-    }
-
-    public double calculateDA() {
-        return 0.10 * basicSalary;
-    }
-
-    public double calculateGrossSalary() {
-        return basicSalary + calculateHRA() + calculateDA();
-    }
-
-    public void displaySalaryDetails() {
-        System.out.println("\n--- Employee Salary Details ---");
-        System.out.println("Employee ID: " + employeeId);
-        System.out.println("Name: " + name);
-        System.out.println("Basic Salary: " + basicSalary);
-        System.out.println("HRA (20%): " + calculateHRA());
-        System.out.println("DA (10%): " + calculateDA());
-        System.out.println("Gross Salary: " + calculateGrossSalary());
-    }
-}
-
+/**
+ * Case Study 3: Employee Salary Management
+ * Problem:
+ * An organization maintains employee information.
+ * Create an Employee class with:
+ * - Employee ID
+ * - Name
+ * - Basic salary
+ * Calculate:
+ * - HRA = 20% of basic salary
+ * - DA = 10% of basic salary
+ * - Gross salary = Basic + HRA + DA
+ * Display the complete salary details.
+ */
 public class CaseStudy03_EmployeeSalary {
+
+    public static class Employee {
+        private final String employeeId;
+        private final String name;
+        private final double basicSalary;
+
+        public Employee(String employeeId, String name, double basicSalary) {
+            this.employeeId = employeeId;
+            this.name = name;
+            this.basicSalary = Math.max(basicSalary, 0.0);
+        }
+
+        public double calculateHRA() {
+            return 0.20 * basicSalary; // 20%
+        }
+
+        public double calculateDA() {
+            return 0.10 * basicSalary; // 10%
+        }
+
+        public double calculateGrossSalary() {
+            return basicSalary + calculateHRA() + calculateDA();
+        }
+
+        public void displaySalarySlip() {
+            System.out.println("==============================================");
+            System.out.println("             EMPLOYEE SALARY SLIP             ");
+            System.out.println("==============================================");
+            System.out.printf("Employee ID:     %s%n", employeeId);
+            System.out.printf("Employee Name:   %s%n", name);
+            System.out.println("----------------------------------------------");
+            System.out.printf("Basic Salary:    ₹%,10.2f%n", basicSalary);
+            System.out.printf("HRA (20%%):       ₹%,10.2f%n", calculateHRA());
+            System.out.printf("DA (10%%):        ₹%,10.2f%n", calculateDA());
+            System.out.println("----------------------------------------------");
+            System.out.printf("GROSS SALARY:    ₹%,10.2f%n", calculateGrossSalary());
+            System.out.println("==============================================");
+        }
+    }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("==================================================");
+        System.out.println("   CASE STUDY 3: EMPLOYEE SALARY MANAGEMENT       ");
+        System.out.println("==================================================");
 
         System.out.print("Enter Employee ID: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-
+        String id = scanner.nextLine().trim();
         System.out.print("Enter Employee Name: ");
-        String name = sc.nextLine();
-
-        System.out.print("Enter Basic Salary: ");
-        double basic = sc.nextDouble();
+        String name = scanner.nextLine().trim();
+        System.out.print("Enter Basic Salary (₹): ");
+        double basic = scanner.hasNextDouble() ? scanner.nextDouble() : 50000.0;
 
         Employee emp = new Employee(id, name, basic);
-        emp.displaySalaryDetails();
+        System.out.println();
+        emp.displaySalarySlip();
 
-        sc.close();
+        scanner.close();
     }
 }
