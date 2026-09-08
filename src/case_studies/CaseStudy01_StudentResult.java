@@ -2,78 +2,72 @@ package case_studies;
 
 import java.util.Scanner;
 
-/**
- * Case Study 1: Student Result Management System
- * Problem:
- * A college wants to develop a Java program to calculate the result of a student.
- * The student has marks in five subjects.
- * Requirements:
- * 1. Accept student name and marks.
- * 2. Calculate total and percentage.
- * 3. Display grade according to:
- *    - Percentage >= 90 -> A+
- *    - Percentage >= 80 -> A
- *    - Percentage >= 70 -> B
- *    - Percentage >= 60 -> C
- *    - Percentage >= 50 -> D
- *    - Below 50 -> F
- * 4. Display whether the student has passed or failed (Pass if percentage >= 50).
- */
 public class CaseStudy01_StudentResult {
 
     public static String calculateGrade(double percentage) {
-        if (percentage >= 90) return "A+";
-        if (percentage >= 80) return "A";
-        if (percentage >= 70) return "B";
-        if (percentage >= 60) return "C";
-        if (percentage >= 50) return "D";
-        return "F";
+        if (percentage >= 90)
+            return "A+";
+        else if (percentage >= 80)
+            return "A";
+        else if (percentage >= 70)
+            return "B";
+        else if (percentage >= 60)
+            return "C";
+        else if (percentage >= 50)
+            return "D";
+        else
+            return "F";
     }
 
     public static boolean isPassed(double percentage) {
-        return percentage >= 50.0;
+        return percentage >= 50;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("==================================================");
-        System.out.println("  CASE STUDY 1: STUDENT RESULT MANAGEMENT SYSTEM  ");
-        System.out.println("==================================================");
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Student Result Management System");
 
         System.out.print("Enter Student Name: ");
-        String name = scanner.nextLine().trim();
+        String name = sc.nextLine();
 
-        int numSubjects = 5;
-        double[] marks = new double[numSubjects];
         double total = 0;
+        double[] marks = new double[5];
 
-        for (int i = 0; i < numSubjects; i++) {
-            System.out.print("Enter marks for Subject " + (i + 1) + " (out of 100): ");
-            while (!scanner.hasNextDouble()) {
-                System.out.print("Invalid input! Please enter numeric marks for Subject " + (i + 1) + ": ");
-                scanner.next();
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Enter marks for Subject " + (i + 1) + ": ");
+
+            while (!sc.hasNextDouble()) {
+                System.out.print("Please enter a valid number: ");
+                sc.next();
             }
-            marks[i] = scanner.nextDouble();
+
+            marks[i] = sc.nextDouble();
+
             while (marks[i] < 0 || marks[i] > 100) {
-                System.out.print("Marks must be between 0 and 100. Re-enter Subject " + (i + 1) + ": ");
-                marks[i] = scanner.nextDouble();
+                System.out.print("Marks should be between 0 and 100. Enter again: ");
+                marks[i] = sc.nextDouble();
             }
+
             total += marks[i];
         }
 
-        double percentage = total / numSubjects;
+        double percentage = total / 5;
         String grade = calculateGrade(percentage);
-        boolean passed = isPassed(percentage);
 
-        System.out.println("\n----------------- STUDENT RESULT -----------------");
-        System.out.printf("Student Name: %s%n", name);
-        System.out.printf("Total Marks:  %.2f / %.2f%n", total, numSubjects * 100.0);
-        System.out.printf("Percentage:   %.2f%%%n", percentage);
-        System.out.printf("Grade:        %s%n", grade);
-        System.out.printf("Final Result: %s%n", (passed ? "PASSED" : "FAILED"));
-        System.out.println("--------------------------------------------------");
+        System.out.println("\nStudent Result");
+        System.out.println("-------------------------");
+        System.out.println("Name: " + name);
+        System.out.println("Total Marks: " + total + " / 500");
+        System.out.printf("Percentage: %.2f%%%n", percentage);
+        System.out.println("Grade: " + grade);
 
-        scanner.close();
+        if (isPassed(percentage))
+            System.out.println("Result: PASSED");
+        else
+            System.out.println("Result: FAILED");
+
+        sc.close();
     }
 }
