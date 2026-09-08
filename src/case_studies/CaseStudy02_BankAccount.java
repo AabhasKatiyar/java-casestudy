@@ -2,98 +2,94 @@ package case_studies;
 
 import java.util.Scanner;
 
-/**
- * Case Study 2: Bank Account Management
- * Problem:
- * A bank wants to create a simple account management program.
- * Create a class BankAccount containing:
- * - Account number
- * - Account holder name
- * - Balance
- * Implement methods:
- * - deposit()
- * - withdraw()
- * - displayBalance()
- * The withdrawal should not be allowed if the requested amount is greater than the available balance.
- */
 public class CaseStudy02_BankAccount {
 
     public static class BankAccount {
-        private final String accountNumber;
-        private final String accountHolderName;
+
+        private String accountNumber;
+        private String accountHolderName;
         private double balance;
 
-        public BankAccount(String accountNumber, String accountHolderName, double initialBalance) {
+        public BankAccount(String accountNumber, String accountHolderName, double balance) {
             this.accountNumber = accountNumber;
             this.accountHolderName = accountHolderName;
-            this.balance = Math.max(initialBalance, 0.0);
+
+            if (balance < 0)
+                this.balance = 0;
+            else
+                this.balance = balance;
         }
 
         public void deposit(double amount) {
             if (amount <= 0) {
-                System.out.println("[Error] Deposit amount must be positive.");
+                System.out.println("Deposit amount must be positive.");
                 return;
             }
-            balance += amount;
-            System.out.printf("Successfully deposited $%.2f. New Balance: $%.2f%n", amount, balance);
+
+            balance = balance + amount;
+            System.out.println("Deposited: $" + amount);
+            System.out.println("New Balance: $" + balance);
         }
 
         public boolean withdraw(double amount) {
             if (amount <= 0) {
-                System.out.println("[Error] Withdrawal amount must be positive.");
+                System.out.println("Withdrawal amount must be positive.");
                 return false;
             }
+
             if (amount > balance) {
-                System.out.printf("[Declined] Insufficient funds! Requested: $%.2f, Available: $%.2f%n", amount, balance);
+                System.out.println("Insufficient balance.");
                 return false;
             }
-            balance -= amount;
-            System.out.printf("Successfully withdrew $%.2f. Remaining Balance: $%.2f%n", amount, balance);
+
+            balance = balance - amount;
+            System.out.println("Withdrawn: $" + amount);
+            System.out.println("Remaining Balance: $" + balance);
+
             return true;
         }
 
         public void displayBalance() {
-            System.out.println("----------------------------------------------");
-            System.out.printf("Account Number: %s%n", accountNumber);
-            System.out.printf("Holder Name:    %s%n", accountHolderName);
-            System.out.printf("Current Balance: $%.2f%n", balance);
-            System.out.println("----------------------------------------------");
-        }
-
-        public double getBalance() {
-            return balance;
+            System.out.println("\nAccount Details");
+            System.out.println("------------------------");
+            System.out.println("Account Number: " + accountNumber);
+            System.out.println("Account Holder: " + accountHolderName);
+            System.out.printf("Balance: $%.2f%n", balance);
+            System.out.println("------------------------");
         }
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("==================================================");
-        System.out.println("     CASE STUDY 2: BANK ACCOUNT MANAGEMENT        ");
-        System.out.println("==================================================");
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Bank Account Management");
 
         System.out.print("Enter Account Number: ");
-        String accNum = scanner.nextLine().trim();
+        String accNum = sc.nextLine();
+
         System.out.print("Enter Account Holder Name: ");
-        String holder = scanner.nextLine().trim();
-        System.out.print("Enter Initial Deposit: $");
-        double initBal = scanner.hasNextDouble() ? scanner.nextDouble() : 1000.0;
+        String name = sc.nextLine();
 
-        BankAccount account = new BankAccount(accNum, holder, initBal);
+        System.out.print("Enter Initial Balance: ");
+        double balance = sc.nextDouble();
+
+        BankAccount account = new BankAccount(accNum, name, balance);
+
         account.displayBalance();
 
-        // Demonstration of operations
-        System.out.println("\n[Action 1] Depositing $500.00:");
-        account.deposit(500.0);
+        System.out.println("\nDepositing $500");
+        account.deposit(500);
 
-        System.out.println("\n[Action 2] Attempting valid withdrawal of $300.00:");
-        account.withdraw(300.0);
+        System.out.println("\nWithdrawing $300");
+        account.withdraw(300);
 
-        System.out.println("\n[Action 3] Attempting invalid withdrawal of $5000.00 (Exceeds balance):");
-        account.withdraw(5000.0);
+        System.out.println("\nTrying to withdraw $5000");
+        account.withdraw(5000);
 
-        System.out.println("\n[Final State]");
+        System.out.println("\nFinal Account Details");
         account.displayBalance();
 
-        scanner.close();
+        sc.close();
     }
 }
