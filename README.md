@@ -46,6 +46,16 @@ A comprehensive, modular repository containing standard university / college sem
 
 ## 🚀 How to Compile & Run
 
+### Exception Handling Case Studies
+
+The separate `CaseStudyExceptionHandling.java` program solves the four problems from the attached exception-handling assignment: bus ticket booking, bank withdrawal, student examination results, and online shopping payment.
+
+Compile and run it from the project root:
+```bash
+javac -d bin CaseStudyExceptionHandling.java
+java -cp bin CaseStudyExceptionHandling
+```
+
 ### 1. Compile Everything into `bin/`
 From the project root:
 ```bash
