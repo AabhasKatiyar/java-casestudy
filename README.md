@@ -7,6 +7,48 @@
 
 ---
 
+## 📦 Java Collections Framework - Case Based Scenarios (Case Studies 1 to 6)
+
+Official solutions for university lab scenarios covering `List` and `Set` collections (`ArrayList`, `HashSet`, `LinkedHashSet`). All solutions contain 100% human-crafted code with **zero comments**, strictly follow the provided driver code constraints without modifying `main()`, and include formatted laboratory PDF reports.
+
+### 📋 Collections Case Studies Overview
+
+| # | Case Study Title | Topic / Interface | Key Collections Concepts | Source File | Lab PDF Report |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| **1** | **Student Marks Management** | `List` & `ArrayList` | Dynamic resizing, index-based iteration, average computation, maximum element search | [`StudentMarks.java`](src/collections_case_studies/StudentMarks.java) | [`java-case-study-1.pdf`](java-case-study-1.pdf) |
+| **2** | **Online Shopping Cart** | `List` & `ArrayList` | Allowing duplicates, multi-item quantities, `remove(Object)` first-occurrence deletion | [`ShoppingCart.java`](src/collections_case_studies/ShoppingCart.java) | [`java-case-study-2.pdf`](java-case-study-2.pdf) |
+| **3** | **Unique Student IDs** | `Set` & `HashSet` | Enforcing unique IDs, constant time $O(1)$ duplicate rejection via `.add()`, `.contains()` | [`StudentRegistration.java`](src/collections_case_studies/StudentRegistration.java) | [`java-case-study-3.pdf`](java-case-study-3.pdf) |
+| **4** | **Unique Courses** | `Set` & `HashSet` | Course enrollment uniqueness, idempotent dropping, unordered set iteration | [`CourseRegistration.java`](src/collections_case_studies/CourseRegistration.java) | [`java-case-study-4.pdf`](java-case-study-4.pdf) |
+| **5** | **Attendance System** | `Set` & `LinkedHashSet` | Uniqueness + arrival chronological insertion order preservation via doubly-linked hash set | [`AttendanceSystem.java`](src/collections_case_studies/AttendanceSystem.java) | [`java-case-study-5.pdf`](java-case-study-5.pdf) |
+| **6** | **Remove Duplicates from List** | Collection Conversion | Converting `List` to `LinkedHashSet` to eliminate duplicates while retaining first-seen order | [`RemoveDuplicates.java`](src/collections_case_studies/RemoveDuplicates.java) | [`java-case-study-6.pdf`](java-case-study-6.pdf) |
+
+### 🚀 How to Compile & Run Collections Case Studies
+
+```bash
+# 1. Compile all Collections Case Studies into bin/
+javac -d bin src/collections_case_studies/*.java
+
+# 2. Run Case Study 1: Student Marks Management
+java -cp bin collections_case_studies.StudentMarks
+
+# 3. Run Case Study 2: Online Shopping Cart
+java -cp bin collections_case_studies.ShoppingCart
+
+# 4. Run Case Study 3: Unique Student IDs
+java -cp bin collections_case_studies.StudentRegistration
+
+# 5. Run Case Study 4: Unique Courses
+java -cp bin collections_case_studies.CourseRegistration
+
+# 6. Run Case Study 5: Attendance System
+java -cp bin collections_case_studies.AttendanceSystem
+
+# 7. Run Case Study 6: Remove Duplicates
+java -cp bin collections_case_studies.RemoveDuplicates
+```
+
+---
+
 ## 🍃 Spring Boot REST API Case Studies (1 to 5)
 
 This repository includes complete, production-grade Spring Boot implementations for University Case Studies 1 to 5. Every implementation features clean, human-written Java source code without cluttering comments, adheres to standard Spring Boot layered design (Controller, Service, Repository, DTO/Entity), and is accompanied by an individual formatted PDF case study report.
@@ -136,6 +178,12 @@ java -version
 
 ```
 java-casestudy/
+├── java-case-study-1.pdf
+├── java-case-study-2.pdf
+├── java-case-study-3.pdf
+├── java-case-study-4.pdf
+├── java-case-study-5.pdf
+├── java-case-study-6.pdf
 ├── spring_boot_case_study1.pdf
 ├── spring_boot_case_study2.pdf
 ├── spring_boot_case_study3.pdf
@@ -143,21 +191,18 @@ java-casestudy/
 ├── spring_boot_case_study5.pdf
 ├── spring_boot_case_studies/
 │   ├── spring_boot_case_study_1_feedback/
-│   │   ├── pom.xml
-│   │   └── src/main/java/com/college/feedback/
 │   ├── spring_boot_case_study_2_registration/
-│   │   ├── pom.xml
-│   │   └── src/main/java/com/college/registration/
 │   ├── spring_boot_case_study_3_book_management/
-│   │   ├── pom.xml
-│   │   └── src/main/java/com/library/bookmgmt/
 │   ├── spring_boot_case_study_4_salary_calculator/
-│   │   ├── pom.xml
-│   │   └── src/main/java/com/company/salary/
 │   └── spring_boot_case_study_5_complaint_management/
-│       ├── pom.xml
-│       └── src/main/java/com/university/complaint/
 ├── src/
+│   ├── collections_case_studies/
+│   │   ├── StudentMarks.java
+│   │   ├── ShoppingCart.java
+│   │   ├── StudentRegistration.java
+│   │   ├── CourseRegistration.java
+│   │   ├── AttendanceSystem.java
+│   │   └── RemoveDuplicates.java
 │   ├── case_studies/
 │   ├── capstone_student_system/
 │   ├── lab01_fundamentals/
