@@ -1,10 +1,95 @@
 # 🎓 College Semester Java Programming Curriculum & Case Study Suite
 
-A comprehensive, modular repository containing standard university / college semester Java coursework, lab exercises, Object-Oriented Programming (OOP) demonstrations, and the complete **10 University Case Study Solutions** plus an interactive **Student Management System** capstone project.
+**Student Name:** Aabhas Katiyar  
+**Roll Number:** 2500290130001  
+**Course:** Advanced Java & Spring Boot Case Study Laboratory  
+**Repository:** [https://github.com/AabhasKatiyar/java-casestudy.git](https://github.com/AabhasKatiyar/java-casestudy.git)
 
 ---
 
-## 📑 10 University Case Studies Solutions
+## 🍃 Spring Boot REST API Case Studies (1 to 5)
+
+This repository includes complete, production-grade Spring Boot implementations for University Case Studies 1 to 5. Every implementation features clean, human-written Java source code without cluttering comments, adheres to standard Spring Boot layered design (Controller, Service, Repository, DTO/Entity), and is accompanied by an individual formatted PDF case study report.
+
+### 📋 Spring Boot Case Studies Overview
+
+| # | Case Study Title | Original Doc Source | Architecture / Key Concepts | Code Project Directory | Official PDF Report |
+| :---: | :--- | :--- | :--- | :--- | :--- |
+| **1** | **Student Feedback Management System** | `case_study_7 (1).docx` | Spring REST API, `@RestController`, `@PostMapping`, `@GetMapping`, In-Memory `ArrayList`, `AtomicLong` | [`case_study_1_feedback`](spring_boot_case_studies/spring_boot_case_study_1_feedback/) | [`spring_boot_case_study1.pdf`](spring_boot_case_study1.pdf) |
+| **2** | **Student Registration System** | `case_study_8.docx` | Spring REST Controller, Temporary `ArrayList` Registry, Roll Number Uniqueness Validation, Status Codes | [`case_study_2_registration`](spring_boot_case_studies/spring_boot_case_study_2_registration/) | [`spring_boot_case_study2.pdf`](spring_boot_case_study2.pdf) |
+| **3** | **Library Book Management System** | `case_study_9.docx` | Spring Data JPA, `JpaRepository`, MySQL Database connectivity, Hibernate ORM, Full CRUD, Query Methods | [`case_study_3_book_management`](spring_boot_case_studies/spring_boot_case_study_3_book_management/) | [`spring_boot_case_study3.pdf`](spring_boot_case_study3.pdf) |
+| **4** | **Employee Salary Calculator** | `case_study_10.docx` | Dependency Injection, Spring `@Service`, Business Logic Separation, Allowances (20%), Deductions (10%), Net Salary | [`case_study_4_salary_calculator`](spring_boot_case_studies/spring_boot_case_study_4_salary_calculator/) | [`spring_boot_case_study4.pdf`](spring_boot_case_study4.pdf) |
+| **5** | **Online Complaint Management System** | `case_study_5.docx` | REST API, Request Validation, Auto-ID Generation, Complaint Status Tracking State Machine (`PENDING`, `RESOLVED`) | [`case_study_5_complaint_management`](spring_boot_case_studies/spring_boot_case_study_5_complaint_management/) | [`spring_boot_case_study5.pdf`](spring_boot_case_study5.pdf) |
+
+---
+
+### 📡 Spring Boot REST Endpoints Specification
+
+#### Case Study 1: Student Feedback Management (`:8081`)
+- **`POST /api/feedback`**: Submit student class feedback.
+  ```bash
+  curl -X POST http://localhost:8081/api/feedback \
+    -H "Content-Type: application/json" \
+    -d '{"studentName":"Aabhas Katiyar","subject":"Java Programming","feedback":"Hands-on sessions are very clear."}'
+  ```
+- **`GET /api/feedback`**: Retrieve all submitted feedbacks.
+- **`GET /api/feedback/subject/{subject}`**: Filter feedback by subject name.
+
+#### Case Study 2: Student Registration System (`:8082`)
+- **`POST /api/students`**: Register a new student with duplicate roll-number detection.
+  ```bash
+  curl -X POST http://localhost:8082/api/students \
+    -H "Content-Type: application/json" \
+    -d '{"name":"Aabhas Katiyar","rollNumber":"2500290130001","course":"B.Tech Computer Science"}'
+  ```
+- **`GET /api/students`**: List all registered students.
+- **`GET /api/students/{rollNumber}`**: Fetch student by roll number.
+
+#### Case Study 3: Library Book Management System (`:8083`)
+- **`POST /api/books`**: Save a new book in the MySQL database via Spring Data JPA.
+  ```bash
+  curl -X POST http://localhost:8083/api/books \
+    -H "Content-Type: application/json" \
+    -d '{"title":"Clean Code","author":"Robert C. Martin"}'
+  ```
+- **`GET /api/books`**: Retrieve all library books.
+- **`GET /api/books/{id}`**: Retrieve single book by primary key ID.
+- **`DELETE /api/books/{id}`**: Delete book entry by ID.
+- **`GET /api/books/search?author={name}`**: Case-insensitive author search.
+
+#### Case Study 4: Employee Salary Calculator (`:8084`)
+- **`POST /api/salary/calculate`**: Compute salary breakdown (Allowances 20%, Deductions 10%, Gross, and Net).
+  ```bash
+  curl -X POST http://localhost:8084/api/salary/calculate \
+    -H "Content-Type: application/json" \
+    -d '{"employeeName":"Aabhas Katiyar","basicSalary":50000.0}'
+  ```
+  **Response:**
+  ```json
+  {
+    "employeeName": "Aabhas Katiyar",
+    "basicSalary": 50000.0,
+    "allowances": 10000.0,
+    "deductions": 5000.0,
+    "grossSalary": 60000.0,
+    "netSalary": 55000.0
+  }
+  ```
+
+#### Case Study 5: Online Complaint Management System (`:8085`)
+- **`POST /api/complaints`**: Submit facility complaint; system sets ID and initial status `PENDING`.
+  ```bash
+  curl -X POST http://localhost:8085/api/complaints \
+    -H "Content-Type: application/json" \
+    -d '{"category":"Wi-Fi","description":"Frequent packet drops in Computer Lab 3."}'
+  ```
+- **`GET /api/complaints`**: Fetch all registered complaints.
+- **`GET /api/complaints/{id}`**: Fetch complaint by ID.
+- **`PATCH /api/complaints/{id}/status?status=RESOLVED`**: Update complaint status.
+
+---
+
+## 📑 10 University Core Java Case Studies Solutions
 
 | # | Case Study Title | Topics / Concepts | Source File |
 | :---: | :--- | :--- | :--- |
@@ -33,105 +118,57 @@ A comprehensive, modular repository containing standard university / college sem
 
 ---
 
-## 🛠️ Prerequisites
+## 🛠️ Prerequisites & Setup
 
 - **Java Development Kit (JDK)**: JDK 17, 21, or 24+ installed.
-- Verify installation:
-  ```bash
-  javac -version
-  java -version
-  ```
+- **Apache Maven**: (or Maven wrapper) to build Spring Boot apps.
+- **MySQL Server**: (for Case Study 3 database connectivity).
 
----
-
-## 🚀 How to Compile & Run
-
-### Exception Handling Case Studies
-
-The separate `CaseStudyExceptionHandling.java` program solves the four problems from the attached exception-handling assignment: bus ticket booking, bank withdrawal, student examination results, and online shopping payment.
-
-Compile and run it from the project root:
+Verify installation:
 ```bash
-javac -d bin CaseStudyExceptionHandling.java
-java -cp bin CaseStudyExceptionHandling
-```
-
-### 1. Compile Everything into `bin/`
-From the project root:
-```bash
-javac -d bin src/case_studies/*.java src/lab01_fundamentals/*.java src/lab02_oop_core/*.java src/lab03_interfaces_abstract/*.java src/lab04_exception_handling/*.java src/capstone_student_system/*.java
-```
-
-### 2. Run the Master Case Studies Menu
-```bash
-java -cp bin case_studies.CaseStudiesRunner
-```
-
-### 3. Run Individual Case Studies Directly
-```bash
-# Case Study 1: Student Result System
-java -cp bin case_studies.CaseStudy01_StudentResult
-
-# Case Study 2: Bank Account Management
-java -cp bin case_studies.CaseStudy02_BankAccount
-
-# Case Study 3: Employee Salary Management
-java -cp bin case_studies.CaseStudy03_EmployeeSalary
-
-# Case Study 4: Online Shopping Cart
-java -cp bin case_studies.CaseStudy04_ShoppingCart
-
-# Case Study 5: Library Management System
-java -cp bin case_studies.CaseStudy05_LibraryManagement
-
-# Case Study 6: Hospital Patient Management
-java -cp bin case_studies.CaseStudy06_PatientManagement
-
-# Case Study 7: ATM Simulator
-java -cp bin case_studies.CaseStudy07_ATMSimulation
-
-# Case Study 8: Employee & Manager Inheritance
-java -cp bin case_studies.CaseStudy08_EmployeeInheritance
-
-# Case Study 9: University Course Registration
-java -cp bin case_studies.CaseStudy09_CourseRegistration
-
-# Case Study 10: E-Commerce Payment (Polymorphism)
-java -cp bin case_studies.CaseStudy10_PaymentSystem
+javac -version
+java -version
 ```
 
 ---
 
-## 📂 Repository Directory Tree
+## 📂 Full Repository Structure
 
 ```
-college-java-semester/
-├── .gitignore
-├── README.md
-└── src/
-    ├── case_studies/
-    │   ├── CaseStudiesRunner.java
-    │   ├── CaseStudy01_StudentResult.java
-    │   ├── CaseStudy02_BankAccount.java
-    │   ├── CaseStudy03_EmployeeSalary.java
-    │   ├── CaseStudy04_ShoppingCart.java
-    │   ├── CaseStudy05_LibraryManagement.java
-    │   ├── CaseStudy06_PatientManagement.java
-    │   ├── CaseStudy07_ATMSimulation.java
-    │   ├── CaseStudy08_EmployeeInheritance.java
-    │   ├── CaseStudy09_CourseRegistration.java
-    │   └── CaseStudy10_PaymentSystem.java
-    ├── capstone_student_system/
-    │   ├── Main.java
-    │   ├── StudentManager.java
-    │   └── StudentRecord.java
-    ├── lab01_fundamentals/
-    ├── lab02_oop_core/
-    ├── lab03_interfaces_abstract/
-    └── lab04_exception_handling/
+java-casestudy/
+├── spring_boot_case_study1.pdf
+├── spring_boot_case_study2.pdf
+├── spring_boot_case_study3.pdf
+├── spring_boot_case_study4.pdf
+├── spring_boot_case_study5.pdf
+├── spring_boot_case_studies/
+│   ├── spring_boot_case_study_1_feedback/
+│   │   ├── pom.xml
+│   │   └── src/main/java/com/college/feedback/
+│   ├── spring_boot_case_study_2_registration/
+│   │   ├── pom.xml
+│   │   └── src/main/java/com/college/registration/
+│   ├── spring_boot_case_study_3_book_management/
+│   │   ├── pom.xml
+│   │   └── src/main/java/com/library/bookmgmt/
+│   ├── spring_boot_case_study_4_salary_calculator/
+│   │   ├── pom.xml
+│   │   └── src/main/java/com/company/salary/
+│   └── spring_boot_case_study_5_complaint_management/
+│       ├── pom.xml
+│       └── src/main/java/com/university/complaint/
+├── src/
+│   ├── case_studies/
+│   ├── capstone_student_system/
+│   ├── lab01_fundamentals/
+│   ├── lab02_oop_core/
+│   ├── lab03_interfaces_abstract/
+│   └── lab04_exception_handling/
+├── CaseStudyExceptionHandling.java
+└── README.md
 ```
 
 ---
 
-## 📄 License
-Academic and learning repository. Open for study, modification, and semester lab submissions.
+## 📄 Academic Integrity & License
+Submitted as part of the University Practical Laboratory Coursework by **Aabhas Katiyar** (Roll No: `2500290130001`). All rights reserved.
